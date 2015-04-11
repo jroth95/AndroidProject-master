@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<Translate>
+    android:fromXDelta="20dp"
+    android:toXDelta="500dp"
+</Translate>

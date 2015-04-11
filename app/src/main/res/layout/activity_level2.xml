@@ -1,0 +1,52 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="jar9fy.cs2110.virginia.edu.androidproject.Level2"
+    android:background="@drawable/basketballcourt">
+
+    <ImageView
+        android:layout_width="175dp"
+        android:layout_height="100dp"
+        android:id="@+id/score_board"
+        android:background="@drawable/scoreboard"
+        android:contentDescription="@string/scoreboard"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Shoot"
+        android:id="@+id/shoot_button"
+        android:background="#ff6edcff"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="bottom" />
+
+    <ImageView
+        android:layout_width="115dp"
+        android:layout_height="95dp"
+        android:id="@+id/cavman"
+        android:background="@drawable/cavman"
+        android:contentDescription="cavman"
+        android:layout_gravity="center_horizontal"
+        android:layout_above="@+id/shoot_button"
+        android:layout_alignRight="@+id/basketball"
+        android:layout_alignEnd="@+id/basketball" />
+
+    <ImageView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:id="@+id/basketball"
+        android:background="@drawable/basketball"
+        android:contentDescription="basketball"
+        android:layout_alignTop="@+id/cavman"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp" />
+
+
+</RelativeLayout>
