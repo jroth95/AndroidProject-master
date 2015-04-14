@@ -44,10 +44,10 @@ public class MainActivity extends ActionBarActivity {
     boolean didShoot = false;
     float baskY;
 
-//
+
 //    //create sound for you ball
-//    MediaPlayer shootBall=  MediaPlayer.create(this, R.raw.shootbutton);
-//    MediaPlayer collide = MediaPlayer.create(this, R.raw.collide);
+
+   //MediaPlayer collide = MediaPlayer.create(this, R.raw.collide);
 
 
     @Override

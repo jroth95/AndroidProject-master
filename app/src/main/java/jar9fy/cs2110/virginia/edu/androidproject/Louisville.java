@@ -10,7 +10,7 @@ import android.view.View;
  */
 public class Louisville extends View implements Character{
 
-    Bitmap lousville  = BitmapFactory.decodeResource(getResources(), R.drawable.lousville);
+    Bitmap louisville  = BitmapFactory.decodeResource(getResources(), R.drawable.louisville);
     float x = 500,y = -1000;
     float velocityY = 3;
 
@@ -35,7 +35,7 @@ public class Louisville extends View implements Character{
 
     @Override
     public Bitmap getBMap() {
-        return lousville;
+        return louisville;
     }
 
     @Override

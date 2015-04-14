@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.media.Image;
+import android.media.MediaPlayer;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -24,14 +25,13 @@ public class ViewDrawer extends View {
     int lives = 1;
     ArrayList<Character> enemyList = new ArrayList<Character>();
 
-    //RelativeLayout layout = (RelativeLayout) findViewById(R.id.layout);
-
     public void construct(Context context){
         Duke d = new Duke(context);
         Louisville l = new Louisville(context);
 
         enemyList.add(d);
         enemyList.add(l);
+
     }
 
     public ViewDrawer(Context context) {
@@ -51,12 +51,11 @@ public class ViewDrawer extends View {
 
     public void onDraw(Canvas canvas){
 
-
         super.onDraw(canvas);
 
         for( int i = 0; i < enemyList.size(); i++ ){
-            canvas.drawBitmap(enemyList.get(i).getBMap(), enemyList.get(i).getX()- (enemyList.get(i).getBMap().getWidth() / 2), enemyList.get(i).getY() - (enemyList.get(i).getBMap().getHeight() / 2), null);
 
+            canvas.drawBitmap(enemyList.get(i).getBMap(), enemyList.get(i).getX()- (enemyList.get(i).getBMap().getWidth() / 2), enemyList.get(i).getY() - (enemyList.get(i).getBMap().getHeight() / 2), null);
             if( enemyList.get(i).getX() > canvas.getHeight()){
                 lives -= 1;
                 enemyList.remove(i);
