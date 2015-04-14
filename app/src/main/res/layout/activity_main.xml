@@ -50,4 +50,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp" />
 
+    <jar9fy.cs2110.virginia.edu.androidproject.ViewDrawer
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
 </RelativeLayout>

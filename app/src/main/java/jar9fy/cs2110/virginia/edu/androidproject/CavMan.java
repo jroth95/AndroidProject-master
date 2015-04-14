@@ -1,6 +1,7 @@
 package jar9fy.cs2110.virginia.edu.androidproject;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -15,6 +16,16 @@ public class CavMan extends View implements Character{
     ImageView cavman;
     ImageView basketball;
 
+    @Override
+    public Bitmap getBMap() {
+        return null;
+    }
+
+    @Override
+    public float getVelocityY() {
+        return 0;
+    }
+
     public CavMan(Context context) {
         super(context);
 
@@ -23,7 +34,6 @@ public class CavMan extends View implements Character{
 
     public void move() {
         cavman = (ImageView) findViewById(R.id.cavman);
-        layout = (RelativeLayout) findViewById(R.id.layout);
         basketball = (ImageView) findViewById(R.id.basketball);
 
 

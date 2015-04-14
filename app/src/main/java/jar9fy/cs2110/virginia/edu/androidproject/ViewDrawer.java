@@ -5,61 +5,66 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.media.Image;
+import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import java.util.ArrayList;
+
+
 /**
  * Created by student on 4/6/2015.
  */
-public class ViewDrawer extends View implements Character {
+public class ViewDrawer extends View {
 
     public static final int THRESHOLD = 20;
 
-    Bitmap lousville  = BitmapFactory.decodeResource(getResources(), R.drawable.lousville);
-    Bitmap duke  = BitmapFactory.decodeResource(getResources(), R.drawable.duke);
-    float x1 = 50,x2 = 20,y1 = -10,y2 = -20;
-    float velocityY1 = 5, velocityY2 = 5;
+    int lives = 1;
+    ArrayList<Character> enemyList = new ArrayList<Character>();
+
     //RelativeLayout layout = (RelativeLayout) findViewById(R.id.layout);
+
+    public void construct(Context context){
+        Duke d = new Duke(context);
+        Louisville l = new Louisville(context);
+
+        enemyList.add(d);
+        enemyList.add(l);
+    }
 
     public ViewDrawer(Context context) {
         super(context);
+        construct(context);
     }
 
+    public ViewDrawer(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        construct(context);
+    }
+
+    public ViewDrawer(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        construct(context);
+    }
 
     public void onDraw(Canvas canvas){
 
+
         super.onDraw(canvas);
 
-        canvas.drawBitmap(lousville, x1 - (lousville.getWidth() / 2), y1 - (lousville.getHeight() / 2), null);
-        canvas.drawBitmap(duke, x2 - (duke.getWidth() / 2), y2 - (duke.getHeight() / 2), null);
+        for( int i = 0; i < enemyList.size(); i++ ){
+            canvas.drawBitmap(enemyList.get(i).getBMap(), enemyList.get(i).getX()- (enemyList.get(i).getBMap().getWidth() / 2), enemyList.get(i).getY() - (enemyList.get(i).getBMap().getHeight() / 2), null);
+
+            if( enemyList.get(i).getX() > canvas.getHeight()){
+                lives -= 1;
+                enemyList.remove(i);
+                i--;
+            }
+           enemyList.get(i).move();
+        }
 
         invalidate();
-    }
-
-    public void move() {
-
-        y1 += velocityY1;
-        y2 += velocityY2;
-
-   /*     //if it moves too far to the right it will begin to move to the left
-        if (x1 >= layout.getWidth() - THRESHOLD) {
-            velocityX1 = -5;
-            x1 += velocityX1;
-        }
-        if (x2 > layout.getWidth() - THRESHOLD) {
-            velocityX2 = -5;
-            x2 += velocityX2;
-        }
-        //if it hits the left wall it will begin to move back to the right
-        if (x1 >= 0) {
-            velocityX1 = 5;
-            x1 += velocityX1;
-        }
-        if (x2 >= 0) {
-            velocityX2 = 5;
-            x2 += velocityX2;
-        }*/
     }
 }

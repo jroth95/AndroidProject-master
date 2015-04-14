@@ -32,6 +32,7 @@ import android.widget.Toast;
 import android.os.Handler;
 
 import java.net.URL;
+import java.util.ArrayList;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -43,19 +44,19 @@ public class MainActivity extends ActionBarActivity {
     boolean didShoot = false;
     float baskY;
 
-    //create sound for you ball
-    MediaPlayer shootBall=  MediaPlayer.create(this, R.raw.shootbutton);
-    MediaPlayer collide = MediaPlayer.create(this, R.raw.collide);
+//
+//    //create sound for you ball
+//    MediaPlayer shootBall=  MediaPlayer.create(this, R.raw.shootbutton);
+//    MediaPlayer collide = MediaPlayer.create(this, R.raw.collide);
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-      setContentView(R.layout.activity_main);
-      // setContentView(R.layout.drawenemies);
-       // ViewDrawer v = new ViewDrawer(this);
-      //  setContentView(v);
+        setContentView(R.layout.activity_main);
+
+
 
         Toast begin = Toast.makeText(MainActivity.this, "Let the games begin!", Toast.LENGTH_SHORT);
         begin.show();
@@ -66,8 +67,8 @@ public class MainActivity extends ActionBarActivity {
         layout = (RelativeLayout) findViewById(R.id.layout);
         basketball = (ImageView) findViewById(R.id.basketball);
 
-        Loop render = new Loop();
-        render.execute();
+//        Loop render = new Loop();
+//        render.execute();
 
 
         //layout gets onTouch listener attached to it
@@ -83,6 +84,7 @@ public class MainActivity extends ActionBarActivity {
 
         });
 
+
         final Intent i2 = new Intent( this, Level2.class);
 
         Button shoot = (Button) findViewById(R.id.shoot_button);
@@ -94,7 +96,7 @@ public class MainActivity extends ActionBarActivity {
                 Toast begin2 = Toast.makeText(MainActivity.this, "shoot!", Toast.LENGTH_SHORT);
                 begin2.show();
                 didShoot = true;
-                shootBall.start();
+//                shootBall.start();
 
 
                /* scorecount = scorecount + 100;
@@ -107,34 +109,30 @@ public class MainActivity extends ActionBarActivity {
                 }*/
             }
         });
-
-
-
-
-        //View Drawer
-      // ViewDrawer drawEnemies = (ViewDrawer) findViewById(R.id.enemy);
     }
 
-    //drawing the images
-    public class Loop extends AsyncTask<Void, Void, Void> {
-        @Override
-        protected Void doInBackground(Void... params) {
 
-            if( didShoot == true){
-                Log.d("jord", "it works");
-               baskY = basketball.getY();
+//    //drawing the images
+//    public class Loop extends AsyncTask<Void, Void, Void> {
+//        @Override
+//        protected Void doInBackground(Void... params) {
+//
+//            if( didShoot == true){
+//                Log.d("jord", "it works");
+//               baskY = basketball.getY();
+//
+//               baskY = baskY - 5;
+//            }
+//        return null;
+//        }
+//    }
+//    public void resetBall(){
+//        if( basketball.getY() < -10){
+//            basketball.setY( cavman.getY());
+//            basketball.setX( cavman.getX() + 125);
+//        }
+//    }
 
-               baskY = baskY - 5;
-            }
-        return null;
-        }
-    }
-    public void resetBall(){
-        if( basketball.getY() < -10){
-            basketball.setY( cavman.getY());
-            basketball.setX( cavman.getX() + 125);
-        }
-    }
 
     public void clickScore(View v){
         Intent i = new Intent(this, Winners.class);
