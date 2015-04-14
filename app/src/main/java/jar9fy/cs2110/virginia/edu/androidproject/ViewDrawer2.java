@@ -1,53 +1,44 @@
 package jar9fy.cs2110.virginia.edu.androidproject;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.media.Image;
-import android.media.MediaPlayer;
 import android.util.AttributeSet;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
-
 /**
- * Created by student on 4/6/2015.
+ * Created by student on 4/14/2015.
  */
-public class ViewDrawer extends View {
-
-    public static final int THRESHOLD = 20;
-
-    int lives = 1;
-
+public class ViewDrawer2 extends View {
+    int lives = 2;
     ArrayList<Character> enemyList = new ArrayList<Character>();
     Toast begin = Toast.makeText(getContext(), "Not such a big guy are you? You died!!", Toast.LENGTH_SHORT);
 
     public void construct(Context context){
-        Duke d = new Duke(context);
-        Louisville l = new Louisville(context);
 
-        enemyList.add(d);
-        enemyList.add(l);
+        Miami m = new Miami(context);
+        NCstate n = new NCstate(context);
+        PantSuit p = new PantSuit(context);
+
+        enemyList.add(m);
+        enemyList.add(n);
+        enemyList.add(p);
 
     }
 
-    public ViewDrawer(Context context) {
+    public ViewDrawer2(Context context) {
         super(context);
         construct(context);
     }
 
-    public ViewDrawer(Context context, AttributeSet attrs) {
+    public ViewDrawer2(Context context, AttributeSet attrs) {
         super(context, attrs);
         construct(context);
     }
 
-    public ViewDrawer(Context context, AttributeSet attrs, int defStyleAttr) {
+    public ViewDrawer2(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         construct(context);
     }
@@ -63,15 +54,9 @@ public class ViewDrawer extends View {
                 enemyList.remove(i);
                 i--;
             }
-           enemyList.get(i).move();
+            enemyList.get(i).move();
         }
         invalidate();
-    }
-
-    public void onDeath(){
-        if( lives == 0){
-            begin.show();
-        }
     }
 
     public int getLives(){

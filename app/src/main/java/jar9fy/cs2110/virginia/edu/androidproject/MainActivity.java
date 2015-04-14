@@ -1,39 +1,15 @@
 package jar9fy.cs2110.virginia.edu.androidproject;
 
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.media.SoundPool;
-import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.MotionEvent;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
 import android.view.View;
-
 import android.content.Intent;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
-import android.os.Handler;
-
-import java.net.URL;
-import java.util.ArrayList;
-
 
 public class MainActivity extends ActionBarActivity {
 
@@ -43,6 +19,7 @@ public class MainActivity extends ActionBarActivity {
     ImageView basketball;
     boolean didShoot = false;
     float baskY;
+    ViewDrawer v = new ViewDrawer(this);
 
 
 //    //create sound for you ball
@@ -67,9 +44,6 @@ public class MainActivity extends ActionBarActivity {
         layout = (RelativeLayout) findViewById(R.id.layout);
         basketball = (ImageView) findViewById(R.id.basketball);
 
-//        Loop render = new Loop();
-//        render.execute();
-
 
         //layout gets onTouch listener attached to it
         layout.setOnTouchListener(new View.OnTouchListener() {
@@ -84,8 +58,12 @@ public class MainActivity extends ActionBarActivity {
 
         });
 
-
         final Intent i2 = new Intent( this, Level2.class);
+
+        if( scorecount == 200 ){
+            startActivity(i2);
+
+        }
 
         Button shoot = (Button) findViewById(R.id.shoot_button);
         shoot.setOnClickListener( new View.OnClickListener() {
@@ -111,32 +89,17 @@ public class MainActivity extends ActionBarActivity {
         });
     }
 
-
-//    //drawing the images
-//    public class Loop extends AsyncTask<Void, Void, Void> {
-//        @Override
-//        protected Void doInBackground(Void... params) {
-//
-//            if( didShoot == true){
-//                Log.d("jord", "it works");
-//               baskY = basketball.getY();
-//
-//               baskY = baskY - 5;
-//            }
-//        return null;
-//        }
-//    }
-//    public void resetBall(){
-//        if( basketball.getY() < -10){
-//            basketball.setY( cavman.getY());
-//            basketball.setX( cavman.getX() + 125);
-//        }
-//    }
-
-
     public void clickScore(View v){
         Intent i = new Intent(this, Winners.class);
         startActivity(i);
+    }
+
+    public void onDeath(){
+        if( v.getLives() == 0 ){
+            Toast begin = Toast.makeText(MainActivity.this, "Not such a big guy are you? You died!!", Toast.LENGTH_SHORT);
+           begin.show();
+            onDestroy();
+        }
     }
 }
 
