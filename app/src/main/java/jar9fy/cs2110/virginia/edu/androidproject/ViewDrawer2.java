@@ -19,7 +19,7 @@ public class ViewDrawer2 extends View {
     public void construct(Context context){
 
         Miami m = new Miami(context);
-        NCstate n = new NCstate(context);
+        NCState n = new NCState(context);
         PantSuit p = new PantSuit(context);
 
         enemyList.add(m);

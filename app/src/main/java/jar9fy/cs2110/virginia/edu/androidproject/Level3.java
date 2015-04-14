@@ -19,7 +19,7 @@ public class Level3 extends ActionBarActivity {
     ImageView cavman;
     ImageView basketball;
     boolean didShoot = false;
-    ViewDrawer v = new ViewDrawer(this);
+    ViewDrawer3 v = new ViewDrawer3(this);
 
 
 //    //create sound for you ball
@@ -53,7 +53,6 @@ public class Level3 extends ActionBarActivity {
         });
 
         final Intent win = new Intent( this, YouWin.class);
-
         if( scorecount == 200 ){
             startActivity(win);
 

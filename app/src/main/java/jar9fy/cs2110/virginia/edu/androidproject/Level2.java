@@ -18,7 +18,7 @@ public class Level2 extends ActionBarActivity {
     ImageView cavman;
     ImageView basketball;
     boolean didShoot = false;
-    ViewDrawer v = new ViewDrawer(this);
+    ViewDrawer2 v = new ViewDrawer2(this);
 
 
 //    //create sound for you ball
