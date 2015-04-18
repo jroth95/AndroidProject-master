@@ -10,7 +10,7 @@ import android.view.View;
  */
 public class PantSuit extends View implements Character {
 
-    Bitmap duke  = BitmapFactory.decodeResource(getResources(), R.drawable.duke);
+    Bitmap pantsuit  = BitmapFactory.decodeResource(getResources(), R.drawable.pantsuit);
     float x = 100,y = -500;
     float velocityY = 3;
 
@@ -32,7 +32,7 @@ public class PantSuit extends View implements Character {
 
     @Override
     public Bitmap getBMap() {
-        return null;
+        return pantsuit;
     }
 
     @Override

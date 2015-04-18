@@ -1,8 +1,10 @@
 package jar9fy.cs2110.virginia.edu.androidproject;
 
 import android.media.MediaPlayer;
+import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.content.Intent;
@@ -20,6 +22,8 @@ public class MainActivity extends ActionBarActivity {
     boolean didShoot = false;
     float baskY;
     ViewDrawer v = new ViewDrawer(this);
+    //private GestureDetectorCompat gestureDetector;
+
 
 
 //    //create sound for you ball
@@ -58,6 +62,8 @@ public class MainActivity extends ActionBarActivity {
 
         });
 
+      //  this.gestureDetector = new GestureDetectorCompat(this, this);
+
         final Intent i2 = new Intent( this, Level2.class);
 
         if( scorecount == 200 ){
@@ -88,6 +94,24 @@ public class MainActivity extends ActionBarActivity {
             }
         });
     }
+    //this is for the basketball motion
+//    @Override
+//    public boolean onTouchEvent(MotionEvent event) {
+//        this.gestureDetector.onTouchEvent(event);
+//        return super.onTouchEvent(event);
+//
+//    }
+//
+//    @Override
+//    public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+//        Basketball b = new Basketball(this);
+//        b.move();
+//
+//        Basketball b2 = new Basketball(this);
+//        b2.setY(cavman.getX() +125);
+//
+//        return true;
+//    }
 
     public void clickScore(View v){
         Intent i = new Intent(this, Winners.class);
@@ -101,5 +125,30 @@ public class MainActivity extends ActionBarActivity {
             onDestroy();
         }
     }
+    //part of the gesture package
+//    @Override
+//    public boolean onDown(MotionEvent e) {
+//        return false;
+//    }
+//
+//    @Override
+//    public void onShowPress(MotionEvent e) {
+//
+//    }
+//
+//    @Override
+//    public boolean onSingleTapUp(MotionEvent e) {
+//        return false;
+//    }
+//
+//    @Override
+//    public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+//        return false;
+//    }
+//
+//    @Override
+//    public void onLongPress(MotionEvent e) {
+//
+//    }
 }
 

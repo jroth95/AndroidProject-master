@@ -10,7 +10,7 @@ import android.view.View;
  */
 public class TonyB extends View implements Character {
 
-    Bitmap duke  = BitmapFactory.decodeResource(getResources(), R.drawable.duke);
+    Bitmap tony  = BitmapFactory.decodeResource(getResources(), R.drawable.tonybennett);
     float x = 100,y = -300;
     float velocityY = 3;
 
@@ -32,12 +32,12 @@ public class TonyB extends View implements Character {
 
     @Override
     public Bitmap getBMap() {
-        return null;
+        return tony;
     }
 
     @Override
     public float getVelocityY() {
-        return 0;
+        return velocityY;
     }
 
     public float getX(){
