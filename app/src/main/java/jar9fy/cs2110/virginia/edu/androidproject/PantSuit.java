@@ -27,7 +27,6 @@ public class PantSuit extends View implements Character {
 
             //player loses life
         }
-
     }
 
     @Override
