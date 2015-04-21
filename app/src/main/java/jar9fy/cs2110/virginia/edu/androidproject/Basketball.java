@@ -22,34 +22,25 @@ public class Basketball extends View {
     ImageView cavman = (ImageView) findViewById(R.id.cavman);
 
     Bitmap basketball  = BitmapFactory.decodeResource(getResources(), R.drawable.basketball);
-    int x = (int)cavman.getX();
-    int y = (int) cavman.getY();
-    int velocityY = 4;
-    private boolean isVisible;
 
+    float x = cavman.getX() + 125;
+    float y = cavman.getY();
+    int velocityY = 4;
 
     public Basketball(Context context) {
         super(context);
-        isVisible = true;
     }
 
-    public void update(){
-        y += velocityY;
-        if( y > 800 ){
-            isVisible = false;
-        }
-    }
-
-    public void setVisible( boolean visible){
-        this.isVisible = visible;
-    }
-
-    public Bitmap getBMap() {
-        return basketball;
+    public void move(){
+        y -= velocityY;
     }
 
     public float getVelocityY() {
         return velocityY;
+    }
+
+    public Bitmap getBMap(){
+        return basketball;
     }
 
 }

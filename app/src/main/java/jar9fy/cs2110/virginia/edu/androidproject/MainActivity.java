@@ -13,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class MainActivity extends ActionBarActivity {
 
     int scorecount = 0;
@@ -21,16 +23,12 @@ public class MainActivity extends ActionBarActivity {
     ImageView basketball;
     ViewDrawer v;
 
-//    private GestureDetectorCompat detect;
-//    private GestureHandler handle;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+
         v = new ViewDrawer(this);
-//
-//        this.handle = new GestureHandler(this);
-//        this.detect = new GestureDetectorCompat(this,handle);
 
         setContentView(R.layout.activity_main);
 
@@ -62,6 +60,7 @@ public class MainActivity extends ActionBarActivity {
             startActivity(i2);
 
         }
+
     }
 
     public void clickScore(View v){

@@ -25,8 +25,8 @@ public class ViewDrawer extends View {
 
     int lives = 1;
 
-    ArrayList<Basketball> balls = new ArrayList<Basketball>();
     ArrayList<Character> enemyList = new ArrayList<Character>();
+  //  ArrayList<Basketball> balls = new ArrayList<>();
     Toast begin = Toast.makeText(getContext(), "Not such a big guy are you? You died!!", Toast.LENGTH_SHORT);
 
     public void construct(Context context){
@@ -35,7 +35,9 @@ public class ViewDrawer extends View {
 
         enemyList.add(d);
         enemyList.add(l);
-//
+
+
+//        //fill up your basketball array
 //        Basketball b1 = new Basketball(context);
 //        Basketball b2 = new Basketball(context);
 //        Basketball b3 = new Basketball(context);
@@ -57,7 +59,6 @@ public class ViewDrawer extends View {
 //        balls.add(b8);
 //        balls.add(b9);
 //        balls.add(b10);
-
     }
 
     public ViewDrawer(Context context) {
@@ -81,24 +82,15 @@ public class ViewDrawer extends View {
 
         for( int i = 0; i < 2; ++i ){
             canvas.drawBitmap(enemyList.get(i).getBMap(), enemyList.get(i).getX()- (enemyList.get(i).getBMap().getWidth() / 2), enemyList.get(i).getY() - (enemyList.get(i).getBMap().getHeight() / 2), null);
-            if( enemyList.get(i).getY() > canvas.getHeight()){
-                lives -= 1;
-            }
            enemyList.get(i).move();
+            if( enemyList.get(i).getY() > canvas.getHeight() || ( enemyList.get(i+1).getY() > canvas.getHeight()) ) {
+                begin.show();
+            }
         }
-//        for( int j = 0; j < balls.size(); ++j ){
+//        for( int j = 0; j < balls.size(); ++j){
 //            canvas.drawBitmap(balls.get(j).getBMap(), balls.get(j).getX()- (balls.get(j).getBMap().getWidth() / 2), balls.get(j).getY() - (balls.get(j).getBMap().getHeight() / 2), null);
-//            if( balls.get(j).getY() > canvas.getHeight()){
-//                balls.remove(j);
-//                j--;
-//            }
-//            balls.get(j).update();
 //        }
         invalidate();
-
-        if( this.getLives() == 0 ){
-            begin.show();
-        }
     }
 
     public int getLives(){
