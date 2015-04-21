@@ -25,7 +25,6 @@ public class MainActivity extends ActionBarActivity {
     private GestureHandler handle;
     private GestureDetectorCompat detect;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
