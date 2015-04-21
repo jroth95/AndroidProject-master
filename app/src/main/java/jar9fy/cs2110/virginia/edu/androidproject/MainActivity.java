@@ -21,23 +21,20 @@ public class MainActivity extends ActionBarActivity {
     ImageView basketball;
     boolean didShoot = false;
     float baskY;
-    ViewDrawer v = new ViewDrawer(this);
-    //private GestureDetectorCompat gestureDetector;
-
-
-
-//    //create sound for you ball
-
-   //MediaPlayer collide = MediaPlayer.create(this, R.raw.collide);
+    ViewDrawer v;
+    private GestureHandler handle;
+    private GestureDetectorCompat detect;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        v = new ViewDrawer(this);
+        this.handle = new GestureHandler();
+        this.detect = new GestureDetectorCompat(this,handle);
+
 
         setContentView(R.layout.activity_main);
-
-
 
         Toast begin = Toast.makeText(MainActivity.this, "Let the games begin!", Toast.LENGTH_SHORT);
         begin.show();
@@ -62,8 +59,6 @@ public class MainActivity extends ActionBarActivity {
 
         });
 
-      //  this.gestureDetector = new GestureDetectorCompat(this, this);
-
         final Intent i2 = new Intent( this, Level2.class);
 
         if( scorecount == 200 ){
@@ -71,47 +66,7 @@ public class MainActivity extends ActionBarActivity {
 
         }
 
-        Button shoot = (Button) findViewById(R.id.shoot_button);
-        shoot.setOnClickListener( new View.OnClickListener() {
-
-
-            @Override
-            public void onClick(View v) {
-                Toast begin2 = Toast.makeText(MainActivity.this, "shoot!", Toast.LENGTH_SHORT);
-                begin2.show();
-                didShoot = true;
-//                shootBall.start();
-
-
-               /* scorecount = scorecount + 100;
-
-                if (scorecount == 300) {
-
-                    startActivity(i2);
-                    Toast begin2 = Toast.makeText(MainActivity.this, "You made a layup into level 2!", Toast.LENGTH_SHORT);
-                    begin2.show();
-                }*/
-            }
-        });
     }
-    //this is for the basketball motion
-//    @Override
-//    public boolean onTouchEvent(MotionEvent event) {
-//        this.gestureDetector.onTouchEvent(event);
-//        return super.onTouchEvent(event);
-//
-//    }
-//
-//    @Override
-//    public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-//        Basketball b = new Basketball(this);
-//        b.move();
-//
-//        Basketball b2 = new Basketball(this);
-//        b2.setY(cavman.getX() +125);
-//
-//        return true;
-//    }
 
     public void clickScore(View v){
         Intent i = new Intent(this, Winners.class);
@@ -125,30 +80,10 @@ public class MainActivity extends ActionBarActivity {
             onDestroy();
         }
     }
-    //part of the gesture package
-//    @Override
-//    public boolean onDown(MotionEvent e) {
-//        return false;
-//    }
-//
-//    @Override
-//    public void onShowPress(MotionEvent e) {
-//
-//    }
-//
-//    @Override
-//    public boolean onSingleTapUp(MotionEvent e) {
-//        return false;
-//    }
-//
-//    @Override
-//    public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-//        return false;
-//    }
-//
-//    @Override
-//    public void onLongPress(MotionEvent e) {
-//
-//    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        return detect.onTouchEvent(event);
+    }
 }
 

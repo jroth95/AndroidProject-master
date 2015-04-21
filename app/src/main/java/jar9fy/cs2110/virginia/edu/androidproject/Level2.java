@@ -34,7 +34,7 @@ public class Level2 extends ActionBarActivity {
 
         //give movement to cavman and basketball
         cavman = (ImageView) findViewById(R.id.cavman);
-        layout = (RelativeLayout) findViewById(R.id.layout);
+        layout = (RelativeLayout) findViewById(R.id.layout2);
         basketball = (ImageView) findViewById(R.id.basketball);
 
 
@@ -58,28 +58,6 @@ public class Level2 extends ActionBarActivity {
 
         }
 
-        Button shoot = (Button) findViewById(R.id.shoot_button);
-        shoot.setOnClickListener( new View.OnClickListener() {
-
-
-            @Override
-            public void onClick(View v) {
-                Toast begin2 = Toast.makeText(Level2.this, "shoot!", Toast.LENGTH_SHORT);
-                begin2.show();
-                didShoot = true;
-//                shootBall.start();
-
-
-               /* scorecount = scorecount + 100;
-
-                if (scorecount == 300) {
-
-                    startActivity(i2);
-                    Toast begin2 = Toast.makeText(MainActivity.this, "You made a layup into level 3!", Toast.LENGTH_SHORT);
-                    begin2.show();
-                }*/
-            }
-        });
     }
 
     public void onDeath(){

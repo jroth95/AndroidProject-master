@@ -25,9 +25,8 @@
         android:background="@drawable/cavman"
         android:contentDescription="cavman"
         android:layout_gravity="center_horizontal"
-        android:layout_above="@+id/shoot_button"
-        android:layout_alignRight="@+id/basketball"
-        android:layout_alignEnd="@+id/basketball" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
     <ImageView
         android:layout_width="25dp"
