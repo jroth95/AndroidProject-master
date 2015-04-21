@@ -11,8 +11,8 @@ import android.view.View;
 public class Louisville extends View implements Character{
 
     Bitmap louisville  = BitmapFactory.decodeResource(getResources(), R.drawable.louisville);
-    float x = 500,y = -1000;
-    float velocityY = 3;
+    float x = 500,y = -700;
+    float velocityY = 2;
 
     public Louisville(Context context) {
         super(context);

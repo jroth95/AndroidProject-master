@@ -49,14 +49,16 @@ public class ViewDrawer2 extends View {
 
         for( int i = 0; i < 2; ++i ){
             canvas.drawBitmap(enemyList.get(i).getBMap(), enemyList.get(i).getX()- (enemyList.get(i).getBMap().getWidth() / 2), enemyList.get(i).getY() - (enemyList.get(i).getBMap().getHeight() / 2), null);
-            if( enemyList.get(i).getX() > canvas.getHeight()){
+            if( enemyList.get(i).getY() > canvas.getHeight()){
                 lives -= 1;
-                enemyList.remove(i);
-                i--;
             }
             enemyList.get(i).move();
         }
         invalidate();
+
+        if( this.getLives() == 0 ){
+            begin.show();
+        }
     }
 
     public int getLives(){

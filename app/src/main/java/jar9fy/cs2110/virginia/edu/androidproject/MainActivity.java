@@ -19,19 +19,19 @@ public class MainActivity extends ActionBarActivity {
     RelativeLayout layout;
     ImageView cavman;
     ImageView basketball;
-    boolean didShoot = false;
-    float baskY;
     ViewDrawer v;
-    private GestureHandler handle;
-    private GestureDetectorCompat detect;
+
+
+//    private GestureDetectorCompat detect;
+//    private GestureHandler handle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         v = new ViewDrawer(this);
-        this.handle = new GestureHandler();
-        this.detect = new GestureDetectorCompat(this,handle);
-
+//
+//        this.handle = new GestureHandler(this);
+//        this.detect = new GestureDetectorCompat(this,handle);
 
         setContentView(R.layout.activity_main);
 
@@ -40,49 +40,39 @@ public class MainActivity extends ActionBarActivity {
 
 
         //give movement to cavman and basketball
-       cavman = (ImageView) findViewById(R.id.cavman);
+        cavman = (ImageView) findViewById(R.id.cavman);
         layout = (RelativeLayout) findViewById(R.id.layout);
         basketball = (ImageView) findViewById(R.id.basketball);
-
 
         //layout gets onTouch listener attached to it
         layout.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
 
-                cavman.setX(event.getX() );
-                basketball.setX(event.getX()+125);
+                cavman.setX(event.getX());
+                basketball.setX(event.getX() + 125);
 
                 return true;
             }
 
         });
 
-        final Intent i2 = new Intent( this, Level2.class);
+        final Intent i2 = new Intent(this, Level2.class);
 
-        if( scorecount == 200 ){
+        if (scorecount == 200) {
             startActivity(i2);
 
         }
-
     }
 
     public void clickScore(View v){
         Intent i = new Intent(this, Winners.class);
         startActivity(i);
     }
-
-    public void onDeath(){
-        if( v.getLives() == 0 ){
-            Toast begin = Toast.makeText(MainActivity.this, "Not such a big guy are you? You died!!", Toast.LENGTH_SHORT);
-           begin.show();
-            onDestroy();
-        }
-    }
-
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        return detect.onTouchEvent(event);
-    }
+//
+//    @Override
+//    public boolean onTouchEvent(MotionEvent event) {
+//        return detect.onTouchEvent(event);
+//    }
 }
 

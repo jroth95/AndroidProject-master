@@ -12,7 +12,7 @@ public class NotreDame extends View implements Character {
 
         Bitmap notredame  = BitmapFactory.decodeResource(getResources(), R.drawable.notredame);
         float x = 100,y = -300;
-        float velocityY = 3;
+        float velocityY = 4;
 
         public NotreDame(Context context) {
             super(context);

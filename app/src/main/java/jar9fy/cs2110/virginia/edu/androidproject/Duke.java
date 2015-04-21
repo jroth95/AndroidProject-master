@@ -14,7 +14,7 @@ public class Duke extends View implements Character{
 
     Bitmap duke  = BitmapFactory.decodeResource(getResources(), R.drawable.duke);
     float x = 200,y = -200;
-    float velocityY = 3;
+    float velocityY = 2;
 
     public Duke(Context context){
         super(context);

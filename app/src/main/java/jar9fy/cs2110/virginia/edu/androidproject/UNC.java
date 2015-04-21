@@ -11,8 +11,8 @@ import android.view.View;
 public class UNC extends View implements Character {
 
         Bitmap unc  = BitmapFactory.decodeResource(getResources(), R.drawable.unc);
-        float x = 100,y = -300;
-        float velocityY = 3;
+        float x = 400,y = -700;
+        float velocityY = 4;
 
         public UNC(Context context) {
             super(context);

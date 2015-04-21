@@ -11,8 +11,8 @@ import android.view.View;
 public class TonyB extends View implements Character {
 
     Bitmap tony  = BitmapFactory.decodeResource(getResources(), R.drawable.tonybennett);
-    float x = 100,y = -300;
-    float velocityY = 3;
+    float x = 500,y = -700;
+    float velocityY = 4;
 
     public TonyB(Context context) {
         super(context);

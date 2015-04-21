@@ -14,7 +14,7 @@ public class Miami extends View implements Character{
 
     Bitmap miami  = BitmapFactory.decodeResource(getResources(), R.drawable.miami);
     float x = 100,y = -200;
-    float velocityY = 5;
+    float velocityY = 3;
 
     public Miami(Context context) {
         super(context);

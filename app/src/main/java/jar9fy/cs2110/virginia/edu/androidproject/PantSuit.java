@@ -11,7 +11,7 @@ import android.view.View;
 public class PantSuit extends View implements Character {
 
     Bitmap pantsuit  = BitmapFactory.decodeResource(getResources(), R.drawable.pantsuit);
-    float x = 100,y = -500;
+    float x = 500,y = -600;
     float velocityY = 3;
 
     public PantSuit(Context context) {

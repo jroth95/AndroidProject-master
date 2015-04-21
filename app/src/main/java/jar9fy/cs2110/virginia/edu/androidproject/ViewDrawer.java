@@ -25,6 +25,7 @@ public class ViewDrawer extends View {
 
     int lives = 1;
 
+    ArrayList<Basketball> balls = new ArrayList<Basketball>();
     ArrayList<Character> enemyList = new ArrayList<Character>();
     Toast begin = Toast.makeText(getContext(), "Not such a big guy are you? You died!!", Toast.LENGTH_SHORT);
 
@@ -34,6 +35,28 @@ public class ViewDrawer extends View {
 
         enemyList.add(d);
         enemyList.add(l);
+//
+//        Basketball b1 = new Basketball(context);
+//        Basketball b2 = new Basketball(context);
+//        Basketball b3 = new Basketball(context);
+//        Basketball b4 = new Basketball(context);
+//        Basketball b5 = new Basketball(context);
+//        Basketball b6 = new Basketball(context);
+//        Basketball b7 = new Basketball(context);
+//        Basketball b8 = new Basketball(context);
+//        Basketball b9 = new Basketball(context);
+//        Basketball b10 = new Basketball(context);
+//
+//        balls.add(b1);
+//        balls.add(b2);
+//        balls.add(b3);
+//        balls.add(b4);
+//        balls.add(b5);
+//        balls.add(b6);
+//        balls.add(b7);
+//        balls.add(b8);
+//        balls.add(b9);
+//        balls.add(b10);
 
     }
 
@@ -58,18 +81,22 @@ public class ViewDrawer extends View {
 
         for( int i = 0; i < 2; ++i ){
             canvas.drawBitmap(enemyList.get(i).getBMap(), enemyList.get(i).getX()- (enemyList.get(i).getBMap().getWidth() / 2), enemyList.get(i).getY() - (enemyList.get(i).getBMap().getHeight() / 2), null);
-            if( enemyList.get(i).getX() > canvas.getHeight()){
+            if( enemyList.get(i).getY() > canvas.getHeight()){
                 lives -= 1;
-                enemyList.remove(i);
-                i--;
             }
            enemyList.get(i).move();
         }
+//        for( int j = 0; j < balls.size(); ++j ){
+//            canvas.drawBitmap(balls.get(j).getBMap(), balls.get(j).getX()- (balls.get(j).getBMap().getWidth() / 2), balls.get(j).getY() - (balls.get(j).getBMap().getHeight() / 2), null);
+//            if( balls.get(j).getY() > canvas.getHeight()){
+//                balls.remove(j);
+//                j--;
+//            }
+//            balls.get(j).update();
+//        }
         invalidate();
-    }
 
-    public void onDeath(){
-        if( lives == 0){
+        if( this.getLives() == 0 ){
             begin.show();
         }
     }
