@@ -48,7 +48,7 @@ public class ViewDrawer3 extends View {
 
         super.onDraw(canvas);
 
-        for( int i = 0; i < 2; ++i ){
+        for( int i = 0; i < 3; ++i ){
             canvas.drawBitmap(enemyList.get(i).getBMap(), enemyList.get(i).getX()- (enemyList.get(i).getBMap().getWidth() / 2), enemyList.get(i).getY() - (enemyList.get(i).getBMap().getHeight() / 2), null);
             if( enemyList.get(i).getY() > canvas.getHeight()){
                 lives -= 1;

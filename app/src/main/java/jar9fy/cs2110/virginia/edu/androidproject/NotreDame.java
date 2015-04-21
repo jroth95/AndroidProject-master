@@ -26,7 +26,7 @@ public class NotreDame extends View implements Character {
 
         @Override
         public Bitmap getBMap() {
-            return null;
+            return notredame;
         }
 
         @Override

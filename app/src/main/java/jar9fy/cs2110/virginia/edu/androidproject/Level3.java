@@ -18,14 +18,7 @@ public class Level3 extends ActionBarActivity {
     RelativeLayout layout;
     ImageView cavman;
     ImageView basketball;
-    boolean didShoot = false;
     ViewDrawer3 v = new ViewDrawer3(this);
-
-
-//    //create sound for you ball
-
-    //MediaPlayer collide = MediaPlayer.create(this, R.raw.collide);
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,16 +51,4 @@ public class Level3 extends ActionBarActivity {
 
         }
     }
-
-    public void onDeath(){
-        if( v.getLives() == 0 ){
-            Toast begin = Toast.makeText(Level3.this, "Not such a big guy are you? You died!!", Toast.LENGTH_SHORT);
-            begin.show();
-            onDestroy();
-        }
-    }
-
-
-
-
 }

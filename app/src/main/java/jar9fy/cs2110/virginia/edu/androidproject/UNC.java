@@ -10,35 +10,35 @@ import android.view.View;
  */
 public class UNC extends View implements Character {
 
-        Bitmap unc  = BitmapFactory.decodeResource(getResources(), R.drawable.unc);
-        float x = 400,y = -700;
-        float velocityY = 4;
+    Bitmap unc  = BitmapFactory.decodeResource(getResources(), R.drawable.unc);
+    float x = 300,y = -600;
+    float velocityY = 4;
 
-        public UNC(Context context) {
-            super(context);
-        }
+    public UNC(Context context) {
+        super(context);
+    }
 
-        @Override
-        public void move() {
+    @Override
+    public void move() {
 
-            y += velocityY;
-        }
+        y += velocityY;
+    }
 
-        @Override
-        public Bitmap getBMap() {
-            return unc;
-        }
+    @Override
+    public Bitmap getBMap() {
+        return unc;
+    }
 
-        @Override
-        public float getVelocityY() {
-            return velocityY;
-        }
+    @Override
+    public float getVelocityY() {
+        return velocityY;
+    }
 
-        public float getX(){
-            return x;
-        }
+    public float getX(){
+        return x;
+    }
 
-        public float getY(){
-            return y;
-        }
+    public float getY(){
+        return y;
+    }
 }

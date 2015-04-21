@@ -12,6 +12,7 @@ import java.util.ArrayList;
  * Created by student on 4/14/2015.
  */
 public class ViewDrawer2 extends View {
+
     int lives = 2;
     ArrayList<Character> enemyList = new ArrayList<Character>();
     Toast begin = Toast.makeText(getContext(), "Not such a big guy are you? You died!!", Toast.LENGTH_SHORT);
@@ -47,7 +48,7 @@ public class ViewDrawer2 extends View {
 
         super.onDraw(canvas);
 
-        for( int i = 0; i < 2; ++i ){
+        for( int i = 0; i < 4; ++i ){
             canvas.drawBitmap(enemyList.get(i).getBMap(), enemyList.get(i).getX()- (enemyList.get(i).getBMap().getWidth() / 2), enemyList.get(i).getY() - (enemyList.get(i).getBMap().getHeight() / 2), null);
             if( enemyList.get(i).getY() > canvas.getHeight()){
                 lives -= 1;

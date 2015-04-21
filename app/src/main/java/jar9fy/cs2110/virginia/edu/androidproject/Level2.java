@@ -59,13 +59,4 @@ public class Level2 extends ActionBarActivity {
         }
 
     }
-
-    public void onDeath(){
-        if( v.getLives() == 0 ){
-            Toast begin = Toast.makeText(Level2.this, "Not such a big guy are you? You died!!", Toast.LENGTH_SHORT);
-            begin.show();
-            onDestroy();
-        }
-    }
-
 }
