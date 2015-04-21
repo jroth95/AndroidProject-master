@@ -21,7 +21,6 @@ public class MainActivity extends ActionBarActivity {
     ImageView basketball;
     ViewDrawer v;
 
-
 //    private GestureDetectorCompat detect;
 //    private GestureHandler handle;
 

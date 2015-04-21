@@ -24,11 +24,6 @@ public class Miami extends View implements Character{
     public void move() {
 
         y += velocityY;
-
-        if( y > 700) {
-
-            //player loses life
-        }
     }
 
     @Override
