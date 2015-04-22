@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.Point;
 import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.view.GestureDetectorCompat;
@@ -19,13 +20,10 @@ import android.widget.TextView;
  */
 public class Basketball extends View {
 
-    ImageView cavman = (ImageView) findViewById(R.id.cavman);
-
     Bitmap basketball  = BitmapFactory.decodeResource(getResources(), R.drawable.basketball);
-
-    float x = cavman.getX() + 125;
-    float y = cavman.getY();
-    int velocityY = 4;
+    Point p = new Point(-1,-1);
+    int x, y;
+    float velocityY = 4;
 
     public Basketball(Context context) {
         super(context);
@@ -43,4 +41,20 @@ public class Basketball extends View {
         return basketball;
     }
 
+    public int getCharX(){
+        return x;
+
+    }
+
+    public int getCharY(){
+        return y;
+    }
+
+    public void setCharX(int x){
+        p.x = x;
+    }
+
+    public void setCharY(int y){
+        p.y = y;
+    }
 }

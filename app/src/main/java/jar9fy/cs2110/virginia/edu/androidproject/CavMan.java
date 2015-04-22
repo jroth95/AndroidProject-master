@@ -2,6 +2,8 @@ package jar9fy.cs2110.virginia.edu.androidproject;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Point;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -11,44 +13,41 @@ import android.widget.TextView;
 /**
  * Created by student on 4/6/2015.
  */
-public class CavMan extends View implements Character{
-    RelativeLayout layout;
-    ImageView cavman;
-    ImageView basketball;
+public class CavMan extends View {
 
-    @Override
-    public Bitmap getBMap() {
-        return null;
-    }
+    Bitmap cavman  = BitmapFactory.decodeResource(getResources(), R.drawable.cavman);
+    Point p = new Point(-1,-1);
+    int x, y;
 
-    @Override
-    public float getVelocityY() {
-        return 0;
-    }
 
     public CavMan(Context context) {
         super(context);
 
     }
 
+    public Bitmap getBMap() {
+        return cavman;
+    }
 
-    public void move() {
-        cavman = (ImageView) findViewById(R.id.cavman);
-        basketball = (ImageView) findViewById(R.id.basketball);
+    public float getVelocityY() {
+        return 0;
+    }
 
+    public int getCharX(){
+        return x;
 
-        //layout gets onTouch listener attached to it
-        layout.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
+    }
 
-                cavman.setX(event.getX());
-                basketball.setX(event.getX());
+    public int getCharY(){
+        return y;
+    }
 
-                return true;
-            }
+    public void setCharX(int x){
+        p.x = x;
+    }
 
-        });
+    public void setCharY(int y){
+        p.y = y;
     }
 
 }
