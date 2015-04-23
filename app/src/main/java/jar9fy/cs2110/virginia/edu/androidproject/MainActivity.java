@@ -71,11 +71,11 @@ public class MainActivity extends ActionBarActivity {
 
             //make a shoot button
             Button launch = (Button) findViewById(R.id.shoot_button);
-                    launch.setOnClickListener(new View.OnClickListener() {
+            launch.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    Toast hey = Toast.makeText(MainActivity.this, "shoot", Toast.LENGTH_SHORT);
-//                    hey.show();
+                    Toast hey = Toast.makeText(MainActivity.this, "shoot", Toast.LENGTH_SHORT);
+                    hey.show();
                     shootBall();
                 }
             });

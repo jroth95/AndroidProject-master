@@ -23,14 +23,13 @@ public class ViewDrawer extends View implements OnTouchListener {
     public static final int THRESHOLD = 20;
 
     int lives = 1;
-
+    boolean isShoot = false;
     int count = 0;
     float x, y;
-
+    Basketball ball;
+    CavMan cav;
     ArrayList<Character> enemyList = new ArrayList<>();
     ArrayList<Basketball> balls = new ArrayList<>();
-    GestureDetector gestureDetector;
-    boolean isTapped = false;
 
     Toast begin = Toast.makeText(getContext(), "Not such a big guy are you? You died!!", Toast.LENGTH_SHORT);
 
@@ -43,8 +42,8 @@ public class ViewDrawer extends View implements OnTouchListener {
         //get your bitmaps
        Duke d = new Duke(context);
        Louisville l = new Louisville(context);
-       Basketball ball = new Basketball(context);
-       CavMan cav = new CavMan(context);
+       ball = new Basketball(context);
+       cav = new CavMan(context);
        // gestureDetector = new GestureDetector(context, new GestureListener());
 
         enemyList.add(d);
@@ -84,7 +83,18 @@ public class ViewDrawer extends View implements OnTouchListener {
     }
 
     public boolean onTouchEvent(MotionEvent event) {
-        x = event.getX();
+        float y = event.getY();
+        if( y > 800 ) {
+            x = event.getX();
+            if(! isShoot ){
+                ball.setCharX( (int) x);
+                ball.setCharY(875);
+            }
+        }
+        else if( y < 800 ){
+            isShoot = true;
+        }
+
         return true;
     }
 
@@ -93,11 +103,24 @@ public class ViewDrawer extends View implements OnTouchListener {
         super.onDraw(canvas);
 
         canvas.drawBitmap(cavman, x - (cavman.getWidth() / 2 ), 800, null);
-        canvas.drawBitmap(basketball, x - (cavman.getWidth() / 2 -160) ,875, null);
+        canvas.drawBitmap(basketball, ball.getcharX() - (cavman.getWidth() / 2 -160) ,875, null);
 
         for (int i = 0; i < enemyList.size(); ++i) {
             canvas.drawBitmap(enemyList.get(i).getBMap(), enemyList.get(i).getX() - (enemyList.get(i).getBMap().getWidth() / 2), enemyList.get(i).getY() - (enemyList.get(i).getBMap().getHeight() / 2), null);
             enemyList.get(i).move();
+
+            //check if you shot the ball
+            if( isShoot ){
+                ball.move();
+                canvas.drawBitmap(basketball, ball.getcharX() - (cavman.getWidth() / 2 -160) ,ball.getcharY(), null);
+
+//                if( ball.getcharY() < 0 ){
+//                    isShoot = false;
+//                    ball.setCharX(  ball.getcharX() - (cavman.getWidth() / 2 -160) );
+//                    ball.setCharY( cav.getcharY() );
+//                }
+
+            }
             if( ( enemyList.get(i).getY() > canvas.getHeight() ) ){
 
                 begin.show();

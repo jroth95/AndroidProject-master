@@ -23,14 +23,17 @@ public class Basketball extends View {
     Bitmap basketball  = BitmapFactory.decodeResource(getResources(), R.drawable.basketball);
     Point point;
     public Point vel;
-
+    int velocity = 4;
+    boolean isShoot = false;
+    float y;
 
     public Basketball(Context context) {
         super(context);
+        point = new Point();
     }
 
     public void move(){
-        point.y -= vel.y;
+      point.y -= velocity;
     }
 
     public int getVelocityY() {
@@ -63,6 +66,10 @@ public class Basketball extends View {
 
     public Point getPoint() {
         return point;
+    }
+
+    public float getY(){
+        return y;
     }
 
 
