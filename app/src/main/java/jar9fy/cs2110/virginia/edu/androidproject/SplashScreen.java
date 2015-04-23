@@ -40,7 +40,7 @@ public class SplashScreen extends Activity {
         @Override
         public void run() {
             try {
-                Thread.sleep(SLEEP_TIME * 100);
+                Thread.sleep(SLEEP_TIME * 500);
             }catch(Exception e) {
                 Log.e(TAG, "splashScreen is up ");
             }

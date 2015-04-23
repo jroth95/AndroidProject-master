@@ -19,32 +19,12 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
-    <ImageView
-        android:layout_width="115dp"
-        android:layout_height="95dp"
-        android:id="@+id/cavman"
-        android:background="@drawable/cavman"
-        android:contentDescription="cavman"
-        android:layout_gravity="center_horizontal"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
-
-    <ImageView
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:id="@+id/basketball"
-        android:background="@drawable/basketball"
-        android:contentDescription="basketball"
-        android:layout_above="@+id/shoot_button"
-        android:layout_alignRight="@+id/cavman"
-        android:layout_alignEnd="@+id/cavman" />
-
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Shoot"
         android:id="@+id/shoot_button"
-        android:onClick="onShoot"
+        android:onClick="onClick"
         android:background="#ffb3f5ff"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
@@ -53,7 +33,7 @@
     <jar9fy.cs2110.virginia.edu.androidproject.ViewDrawer
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:id="@+id/view"
+        android:id="@+id/view_drawer"
         android:layout_alignBottom="@+id/cavman"
         android:layout_alignRight="@+id/shoot_button"
         android:layout_alignEnd="@+id/shoot_button" />

@@ -21,40 +21,49 @@ import android.widget.TextView;
 public class Basketball extends View {
 
     Bitmap basketball  = BitmapFactory.decodeResource(getResources(), R.drawable.basketball);
-    Point p = new Point(-1,-1);
-    int x, y;
-    float velocityY = 4;
+    Point point;
+    public Point vel;
+
 
     public Basketball(Context context) {
         super(context);
     }
 
     public void move(){
-        y -= velocityY;
+        point.y -= vel.y;
     }
 
-    public float getVelocityY() {
-        return velocityY;
+    public int getVelocityY() {
+        return vel.y;
     }
 
     public Bitmap getBMap(){
         return basketball;
     }
 
-    public int getCharX(){
-        return x;
-
+    public int getcharX() {
+        return point.x;
     }
 
-    public int getCharY(){
-        return y;
+    public int getcharY() {
+        return point.y;
     }
 
-    public void setCharX(int x){
-        p.x = x;
+    public void setCharX( int x) {
+        point.x = x ;
     }
 
-    public void setCharY(int y){
-        p.y = y;
+    public void setCharY(int y) {
+        point.y = y;
     }
+
+    public void setVelocity(int x, int y) {
+        vel = new Point (x,y);
+    }
+
+    public Point getPoint() {
+        return point;
+    }
+
+
 }

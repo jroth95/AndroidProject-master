@@ -23,17 +23,15 @@ import java.util.ArrayList;
 public class MainActivity extends ActionBarActivity {
 
     int scorecount = 0;
-    RelativeLayout layout;
-//    ImageView cavman;
-//    ImageView basketball;
+   // RelativeLayout layout = (RelativeLayout) findViewById(R.id.layout);
     ViewDrawer v;
     Basketball ball;
     CavMan cav;
 
-    Bitmap cavman  = BitmapFactory.decodeResource(getResources(), R.drawable.cavman);
+    boolean isShoot = false;
+
     private float cavX, cavY;
 
-    Bitmap basketball  = BitmapFactory.decodeResource(getResources(), R.drawable.basketball);
 
         @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,44 +47,21 @@ public class MainActivity extends ActionBarActivity {
             Toast begin = Toast.makeText(MainActivity.this, "Let the games begin!", Toast.LENGTH_SHORT);
             begin.show();
 
-//
-//            //give movement to cavman and basketball
-//            cavman = (ImageView) findViewById(R.id.cavman);
-//            layout = (RelativeLayout) findViewById(R.id.layout);
-//            basketball = (ImageView) findViewById(R.id.basketball);
-//
-//
-//            //layout gets onTouch listener attached to it
 //            layout.setOnTouchListener(new View.OnTouchListener() {
 //                @Override
 //                public boolean onTouch(View v, MotionEvent event) {
+//                    cavX = event.getX();
+//                    cavY = event.getY();
 //
-//                    cavman.setX(event.getX());
-//                    basketball.setX(event.getX() + 125);
+//                        if (!isShoot) {
+//                            ball.setCharX( (int) cavX + 125 );
+//                            ball.setCharY( (int) cavY - 75);
+//                            cav.setCharX( (int ) cavX);
+//                            cav.setCharY( (int) cavY);
 //
+//                        }
 //                    return true;
-//                }
-//
-//            });
-
-//            if( v.isTapped ){
-//
-//            }
-            v.setOnTouchListener(new View.OnTouchListener() {
-                @Override
-                public boolean onTouch(View v, MotionEvent event) {
-                    cavX = event.getX();
-                    cavY = event.getY();
-
-                    ball.setCharX((int) cavX + 125);
-                    ball.setCharY( cav.getCharY() + 80);
-                    cav.setCharX((int) cavX);
-                    cav.setCharY( (int) cavY );
-
-                    return true;
-
-                }
-            });
+//                    }});
 
                 final Intent i2 = new Intent(this, Level2.class);
 
@@ -94,12 +69,32 @@ public class MainActivity extends ActionBarActivity {
 
                 }
 
+            //make a shoot button
+            Button launch = (Button) findViewById(R.id.shoot_button);
+                    launch.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+//                    Toast hey = Toast.makeText(MainActivity.this, "shoot", Toast.LENGTH_SHORT);
+//                    hey.show();
+                    shootBall();
+                }
+            });
+
+            if(isShoot){
+               ball.move();
+            }
             }
 
     public void clickScore(View v){
         Intent i = new Intent(this, Winners.class);
         startActivity(i);
     }
+
+    public void shootBall() {
+        isShoot = true;
+    }
+
+
 
 }
 

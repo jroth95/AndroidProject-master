@@ -9,29 +9,29 @@ import android.graphics.Point;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
-
+import android.view.View.OnTouchListener;
 import java.util.ArrayList;
-
+import android.view.MotionEvent;
 
 /**
  * Created by student on 4/6/2015.
  */
-public class ViewDrawer extends View {
+public class ViewDrawer extends View implements OnTouchListener {
 
     public static final int THRESHOLD = 20;
 
     int lives = 1;
 
+    int count = 0;
+    float x, y;
 
     ArrayList<Character> enemyList = new ArrayList<>();
     ArrayList<Basketball> balls = new ArrayList<>();
     GestureDetector gestureDetector;
     boolean isTapped = false;
-    public CavMan cav;
-    public Basketball ball;
+
     Toast begin = Toast.makeText(getContext(), "Not such a big guy are you? You died!!", Toast.LENGTH_SHORT);
 
     Bitmap cavman  = BitmapFactory.decodeResource(getResources(), R.drawable.cavman);
@@ -43,20 +43,15 @@ public class ViewDrawer extends View {
         //get your bitmaps
        Duke d = new Duke(context);
        Louisville l = new Louisville(context);
-       ball = new Basketball(context);
-       cav = new CavMan(context);
+       Basketball ball = new Basketball(context);
+       CavMan cav = new CavMan(context);
        // gestureDetector = new GestureDetector(context, new GestureListener());
 
         enemyList.add(d);
         enemyList.add(l);
-
     }
-//
-//    @Override
-//    public boolean onTouchEvent(MotionEvent e) {
-//        return gestureDetector.onTouchEvent(e);
-//    }
-//
+
+
 //
 //    private class GestureListener extends GestureDetector.SimpleOnGestureListener {
 //
@@ -88,41 +83,39 @@ public class ViewDrawer extends View {
         construct(context);
     }
 
+    public boolean onTouchEvent(MotionEvent event) {
+        x = event.getX();
+        return true;
+    }
+
     public void onDraw(Canvas canvas) {
 
         super.onDraw(canvas);
 
-        canvas.drawBitmap(cavman,canvas.getWidth()/2 ,600 ,null );
-        canvas.drawBitmap(basketball,canvas.getWidth()/2 + 125 ,600 ,null );
+        canvas.drawBitmap(cavman, x - (cavman.getWidth() / 2 ), 800, null);
+        canvas.drawBitmap(basketball, x - (cavman.getWidth() / 2 -160) ,875, null);
 
-
-//        if (isTapped == true) {
-////            for (int j = 0; j < 1; ++j) {
-////                canvas.drawBitmap(balls.get(j).getBMap(), balls.get(j).getX() - (balls.get(j).getBMap().getWidth() / 2), balls.get(j).getY() - (balls.get(j).getBMap().getHeight() / 2), null);
-////                balls.get(j).move();
-////                if( balls.get(j).getY() > 700 ) {
-////                    balls.remove(j);
-////                    isTapped = false;
-////                }
-////            }
-//
-//            //if basketball is launched then redraw
-//        }
-
-        for (int i = 0; i < 2; ++i) {
+        for (int i = 0; i < enemyList.size(); ++i) {
             canvas.drawBitmap(enemyList.get(i).getBMap(), enemyList.get(i).getX() - (enemyList.get(i).getBMap().getWidth() / 2), enemyList.get(i).getY() - (enemyList.get(i).getBMap().getHeight() / 2), null);
             enemyList.get(i).move();
-            if (enemyList.get(i).getY() > canvas.getHeight() || (enemyList.get(i + 1).getY() > canvas.getHeight())) {
+            if( ( enemyList.get(i).getY() > canvas.getHeight() ) ){
+
                 begin.show();
+
             }
+
         }
-
         invalidate();
-    }
 
+    }
 
 
     public int getLives(){
         return lives;
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        return false;
     }
 }
