@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Point;
+import android.graphics.Rect;
 import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.view.GestureDetectorCompat;
@@ -26,6 +27,10 @@ public class Basketball extends View {
     int velocity = 4;
     boolean isShoot = false;
     float y;
+    int bballX1, bballX2;
+    int bballY1, bballY2;
+    float bballlocation1, bballlocation2;
+    Rect aroundBball;
 
     public Basketball(Context context) {
         super(context);
@@ -34,6 +39,7 @@ public class Basketball extends View {
 
     public void move(){
       point.y -= velocity;
+     // this.makeRectangle();
     }
 
     public int getVelocityY() {
@@ -70,6 +76,25 @@ public class Basketball extends View {
 
     public float getY(){
         return y;
+    }
+
+    public boolean makeRectangle() {
+        bballlocation1 = this.getX();
+        bballX1 = (int) bballlocation1;
+        bballX2 = bballX1 + basketball.getWidth();
+
+        bballlocation2 = this.getY();
+        bballY1 = (int) bballlocation2;
+        bballY2 = bballY1 - basketball.getHeight();
+
+        aroundBball.set(bballX1, bballY1, bballX2, bballY1);
+
+        return true;
+
+    }
+
+    public Rect getRectangle() {
+        return aroundBball;
     }
 
 

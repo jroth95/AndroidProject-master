@@ -16,12 +16,16 @@ public class ViewDrawer3 extends View {
     int lives = 3;
     ArrayList<Character> enemyList = new ArrayList<Character>();
     Toast begin = Toast.makeText(getContext(), "Not such a big guy are you? You died!!", Toast.LENGTH_SHORT);
+    Collide c;
+    NotreDame nd;
+    UNC u;
+    TonyB t;
 
     public void construct(Context context){
 
-        NotreDame nd = new NotreDame(context);
-        UNC u = new UNC(context);
-        TonyB t = new TonyB(context);
+        nd = new NotreDame(context);
+        u = new UNC(context);
+        t = new TonyB(context);
 
         enemyList.add(nd);
         enemyList.add(u);
@@ -55,6 +59,16 @@ public class ViewDrawer3 extends View {
             }
             enemyList.get(i).move();
         }
+//        if(c.checkNotreDame()){
+//            nd.getBMap().recycle();
+//        }
+//        else if(c.checkUNC()){
+//            u.getBMap().recycle();
+//        }
+//        else if(c.checkTonyB()){
+//            t.getBMap().recycle();
+//
+//        }
         invalidate();
 
     }

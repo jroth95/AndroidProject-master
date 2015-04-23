@@ -16,12 +16,17 @@ public class ViewDrawer2 extends View {
     int lives = 2;
     ArrayList<Character> enemyList = new ArrayList<Character>();
     Toast begin = Toast.makeText(getContext(), "Not such a big guy are you? You died!!", Toast.LENGTH_SHORT);
+    Collide c;
+    Miami m;
+    PantSuit p;
+    NCState n;
+
 
     public void construct(Context context){
 
-        Miami m = new Miami(context);
-        NCState n = new NCState(context);
-        PantSuit p = new PantSuit(context);
+        m = new Miami(context);
+        n = new NCState(context);
+        p = new PantSuit(context);
 
         enemyList.add(m);
         enemyList.add(n);
@@ -55,6 +60,12 @@ public class ViewDrawer2 extends View {
             }
             enemyList.get(i).move();
         }
+//        if(c.checkMiami()){
+//            m.getBMap().recycle();
+//        }
+//        else if(c.checkPantSuit()){
+//            p.getBMap().recycle();
+//        }
         invalidate();
     }
 

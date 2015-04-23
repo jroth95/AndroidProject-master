@@ -24,26 +24,32 @@ public class ViewDrawer extends View implements OnTouchListener {
 
     int lives = 1;
     boolean isShoot = false;
-    int count = 0;
+
+    // movement
     float x, y;
+
+    //all the characters and collide
+    Collide c;
+    Duke d;
+    Louisville l;
     Basketball ball;
     CavMan cav;
+
+    //array list of enemy bitmaps
     ArrayList<Character> enemyList = new ArrayList<>();
-    ArrayList<Basketball> balls = new ArrayList<>();
 
     Toast begin = Toast.makeText(getContext(), "Not such a big guy are you? You died!!", Toast.LENGTH_SHORT);
 
     Bitmap cavman  = BitmapFactory.decodeResource(getResources(), R.drawable.cavman);
-
     Bitmap basketball  = BitmapFactory.decodeResource(getResources(), R.drawable.basketball);
 
     public void construct(Context context) {
 
         //get your bitmaps
-       Duke d = new Duke(context);
-       Louisville l = new Louisville(context);
-       ball = new Basketball(context);
-       cav = new CavMan(context);
+      d = new Duke(context);
+      l = new Louisville(context);
+      ball = new Basketball(context);
+      cav = new CavMan(context);
        // gestureDetector = new GestureDetector(context, new GestureListener());
 
         enemyList.add(d);
@@ -121,11 +127,17 @@ public class ViewDrawer extends View implements OnTouchListener {
 //                }
 
             }
-            if( ( enemyList.get(i).getY() > canvas.getHeight() ) ){
-
-                begin.show();
-
+            //check for collisions
+            if (c.checkDuke()){
+                d.getBMap().recycle();
             }
+//            else if(c.checkLouisville()){
+//                l.getBMap().recycle();
+//            }
+//            //if players go off screen then you die
+//            if( ( enemyList.get(i).getY() > canvas.getHeight() ) ){
+//                begin.show();
+//            }
 
         }
         invalidate();

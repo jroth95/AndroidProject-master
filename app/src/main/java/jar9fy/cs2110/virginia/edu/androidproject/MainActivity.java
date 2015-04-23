@@ -23,15 +23,9 @@ import java.util.ArrayList;
 public class MainActivity extends ActionBarActivity {
 
     int scorecount = 0;
-   // RelativeLayout layout = (RelativeLayout) findViewById(R.id.layout);
     ViewDrawer v;
     Basketball ball;
     CavMan cav;
-
-    boolean isShoot = false;
-
-    private float cavX, cavY;
-
 
         @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,53 +41,18 @@ public class MainActivity extends ActionBarActivity {
             Toast begin = Toast.makeText(MainActivity.this, "Let the games begin!", Toast.LENGTH_SHORT);
             begin.show();
 
-//            layout.setOnTouchListener(new View.OnTouchListener() {
-//                @Override
-//                public boolean onTouch(View v, MotionEvent event) {
-//                    cavX = event.getX();
-//                    cavY = event.getY();
-//
-//                        if (!isShoot) {
-//                            ball.setCharX( (int) cavX + 125 );
-//                            ball.setCharY( (int) cavY - 75);
-//                            cav.setCharX( (int ) cavX);
-//                            cav.setCharY( (int) cavY);
-//
-//                        }
-//                    return true;
-//                    }});
+            final Intent i2 = new Intent(this, Level2.class);
 
-                final Intent i2 = new Intent(this, Level2.class);
+            if (scorecount == 200) {
 
-                if(scorecount==200) {
-
-                }
-
-            //make a shoot button
-            Button launch = (Button) findViewById(R.id.shoot_button);
-            launch.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast hey = Toast.makeText(MainActivity.this, "shoot", Toast.LENGTH_SHORT);
-                    hey.show();
-                    shootBall();
-                }
-            });
-
-            if(isShoot){
-               ball.move();
             }
-            }
+        }
+
 
     public void clickScore(View v){
         Intent i = new Intent(this, Winners.class);
         startActivity(i);
     }
-
-    public void shootBall() {
-        isShoot = true;
-    }
-
 
 
 }
