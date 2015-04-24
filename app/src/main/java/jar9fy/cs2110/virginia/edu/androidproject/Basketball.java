@@ -77,25 +77,26 @@ public class Basketball extends View {
     public float getY(){
         return y;
     }
-//
-//    public boolean makeRectangle() {
-//        bballlocation1 = this.getX();
-//        bballX1 = (int) bballlocation1;
-//        bballX2 = bballX1 + basketball.getWidth();
-//
-//        bballlocation2 = this.getY();
-//        bballY1 = (int) bballlocation2;
-//        bballY2 = bballY1 - basketball.getHeight();
-//
-//        aroundBball.set(bballX1, bballY1, bballX2, bballY1);
-//
-//        return true;
-//
-//    }
-//
-//    public Rect getRectangle() {
-//        return aroundBball;
-//    }
+
+    public Rect makeRectangle() {
+
+        bballlocation1 = this.getX();
+        bballX1 = (int) bballlocation1;
+        bballX2 = bballX1 + basketball.getWidth();
+
+        bballlocation2 = this.getY();
+        bballY1 = (int) bballlocation2;
+        bballY2 = bballY1 - basketball.getHeight();
+
+        aroundBball.set(bballX1, bballY1, bballX2, bballY1);
+
+        return aroundBball;
+
+    }
+
+    public Rect getRectangle() {
+        return aroundBball;
+    }
 
 
 }

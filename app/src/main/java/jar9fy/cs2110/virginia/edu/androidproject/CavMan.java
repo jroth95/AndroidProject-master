@@ -21,6 +21,7 @@ public class CavMan extends View {
 
     public CavMan(Context context) {
         super(context);
+        point = new Point();
     }
 
     public int getVelocityY() {

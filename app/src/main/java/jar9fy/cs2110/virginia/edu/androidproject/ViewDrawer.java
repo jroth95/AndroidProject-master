@@ -20,8 +20,8 @@ import android.view.MotionEvent;
  */
 public class ViewDrawer extends View implements OnTouchListener {
 
-    public static final int THRESHOLD = 20;
 
+    public int score = 0;
     int lives = 1;
     boolean isShoot = false;
 
@@ -123,18 +123,16 @@ public class ViewDrawer extends View implements OnTouchListener {
                 if( ball.getcharY() < 0 ){
                     isShoot = false;
                     canvas.drawBitmap(basketball, ball.getcharX() - (cavman.getWidth() / 2 -160) ,ball.getcharY(), null);
-//                    ball.setCharX(  cav.getcharX() - (cavman.getWidth() / 2 -160) );
-//                    ball.setCharY( cav.getcharY() + 75 );
+
                 }
 
             }
 //            //check for collisions
-//            if (c.checkDuke()){
-//                d.getBMap().recycle();
-//            }
-//            else if(c.checkLouisville()){
-//                l.getBMap().recycle();
-//            }
+            if( d.checkForCollision(ball) ){
+                d.getBMap().recycle();
+                score += 100;
+            }
+
             //if players go off screen then you die
             if( d.getY() > canvas.getHeight() ){
                deadDuke = true;

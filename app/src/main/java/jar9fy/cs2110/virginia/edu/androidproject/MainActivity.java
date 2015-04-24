@@ -19,6 +19,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import android.os.Handler;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -26,12 +27,16 @@ public class MainActivity extends ActionBarActivity {
     ViewDrawer v;
     Basketball ball;
     CavMan cav;
+    Duke d;
+    private Handler frame = new Handler();
+    private static final int FRAME_RATE = 20;
+
 
         @Override
     protected void onCreate(Bundle savedInstanceState) {
 
             super.onCreate(savedInstanceState);
-
+            d = new Duke(this);
             v = new ViewDrawer(this);
             ball = new Basketball(this);
             cav = new CavMan(this);
@@ -47,7 +52,17 @@ public class MainActivity extends ActionBarActivity {
 
             }
         }
-
+    public Runnable update = new Runnable() {
+        @Override
+        synchronized public void run(){
+            if( d.checkForCollision(ball) ){
+                scorecount += 100;
+                d.getBMap().recycle();
+            }
+            frame.removeCallbacks(update);
+            frame.postDelayed(update, FRAME_RATE);
+        }
+    };
 
     public void clickScore(View v){
         Intent i = new Intent(this, Winners.class);
