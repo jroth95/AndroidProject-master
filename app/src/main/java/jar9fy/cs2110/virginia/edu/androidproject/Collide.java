@@ -30,14 +30,14 @@ public class Collide {
         UNC u = new UNC(context);
 
     }
-
-    public boolean checkDuke() {
-        Rect ball = b.getRectangle();
-        Rect duke = d.getRectangle();
-
-        if (ball.intersect(duke)) {return true;}
-        else {return false;}
-    }
+//
+//    public boolean checkDuke() {
+//        Rect ball = b.getRectangle();
+//        Rect duke = d.getRectangle();
+//
+//        if (ball.intersect(duke)) {return true;}
+//        else {return false;}
+//    }
 //
 //    public boolean checkLouisville() {
 //        Rect ball = b.getRectangle();

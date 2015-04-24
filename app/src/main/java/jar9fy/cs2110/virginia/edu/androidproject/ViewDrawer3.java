@@ -14,12 +14,18 @@ import java.util.ArrayList;
 public class ViewDrawer3 extends View {
 
     int lives = 3;
-    ArrayList<Character> enemyList = new ArrayList<Character>();
+
     Toast begin = Toast.makeText(getContext(), "Not such a big guy are you? You died!!", Toast.LENGTH_SHORT);
+
+    //enemies and collide
     Collide c;
     NotreDame nd;
     UNC u;
     TonyB t;
+
+    //enemy list
+    ArrayList<Character> enemyList = new ArrayList<Character>();
+    boolean deadNot = false, deadUN = false, deadTony = false;
 
     public void construct(Context context){
 
@@ -69,6 +75,18 @@ public class ViewDrawer3 extends View {
 //            t.getBMap().recycle();
 //
 //        }
+        if( nd.getY() > canvas.getHeight() ){
+            deadNot = true;
+        }
+        if( u.getY() > canvas.getHeight()  ){
+            deadUN = true;
+        }
+        if( t.getY() > canvas.getHeight()){
+            deadTony = true;
+        }
+        if( deadNot && deadUN&& deadTony){
+            begin.show();
+        }
         invalidate();
 
     }

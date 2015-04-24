@@ -37,7 +37,7 @@ public class ViewDrawer extends View implements OnTouchListener {
 
     //array list of enemy bitmaps
     ArrayList<Character> enemyList = new ArrayList<>();
-
+    boolean deadDuke = false, deadLou = false;
     Toast begin = Toast.makeText(getContext(), "Not such a big guy are you? You died!!", Toast.LENGTH_SHORT);
 
     Bitmap cavman  = BitmapFactory.decodeResource(getResources(), R.drawable.cavman);
@@ -120,24 +120,31 @@ public class ViewDrawer extends View implements OnTouchListener {
                 ball.move();
                 canvas.drawBitmap(basketball, ball.getcharX() - (cavman.getWidth() / 2 -160) ,ball.getcharY(), null);
 
-//                if( ball.getcharY() < 0 ){
-//                    isShoot = false;
-//                    ball.setCharX(  ball.getcharX() - (cavman.getWidth() / 2 -160) );
-//                    ball.setCharY( cav.getcharY() );
-//                }
+                if( ball.getcharY() < 0 ){
+                    isShoot = false;
+                    canvas.drawBitmap(basketball, ball.getcharX() - (cavman.getWidth() / 2 -160) ,ball.getcharY(), null);
+//                    ball.setCharX(  cav.getcharX() - (cavman.getWidth() / 2 -160) );
+//                    ball.setCharY( cav.getcharY() + 75 );
+                }
 
             }
-            //check for collisions
-            if (c.checkDuke()){
-                d.getBMap().recycle();
-            }
+//            //check for collisions
+//            if (c.checkDuke()){
+//                d.getBMap().recycle();
+//            }
 //            else if(c.checkLouisville()){
 //                l.getBMap().recycle();
 //            }
-//            //if players go off screen then you die
-//            if( ( enemyList.get(i).getY() > canvas.getHeight() ) ){
-//                begin.show();
-//            }
+            //if players go off screen then you die
+            if( d.getY() > canvas.getHeight() ){
+               deadDuke = true;
+            }
+            if( l.getY() > canvas.getHeight()  ){
+               deadLou = true;
+            }
+            if( deadDuke && deadLou){
+                begin.show();
+            }
 
         }
         invalidate();

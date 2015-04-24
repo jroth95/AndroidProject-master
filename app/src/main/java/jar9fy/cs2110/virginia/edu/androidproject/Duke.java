@@ -33,7 +33,7 @@ public class Duke extends View implements Character{
 
     public void move(){
         y += velocityY;
-        this.makeRectangle();
+       // this.makeRectangle();
     }
 
     public float getX(){
@@ -48,23 +48,23 @@ public class Duke extends View implements Character{
         return velocityY;
     }
 
-   // @Override
-    public boolean makeRectangle() {
-        dukelocation1 = this.getX();
-        dukeX1 = (int) dukelocation1;
-        dukeX2 = dukeX1 + duke.getWidth();
-
-        dukelocation2 = this.getY();
-        dukeY1 = (int) dukelocation2;
-        dukeY2 = dukeY1 - duke.getHeight();
-
-        aroundDuke.set(dukeX1, dukeY1, dukeX2, dukeY1);
-
-        return true;
-    }
-
-    //@Override
-    public Rect getRectangle() {
-        return aroundDuke;
-    }
+//   // @Override
+//    public boolean makeRectangle() {
+//        dukelocation1 = this.getX();
+//        dukeX1 = (int) dukelocation1;
+//        dukeX2 = dukeX1 + duke.getWidth();
+//
+//        dukelocation2 = this.getY();
+//        dukeY1 = (int) dukelocation2;
+//        dukeY2 = dukeY1 - duke.getHeight();
+//
+//        aroundDuke.set(dukeX1, dukeY1, dukeX2, dukeY1);
+//
+//        return true;
+//    }
+//
+//    //@Override
+//    public Rect getRectangle() {
+//        return aroundDuke;
+//    }
 }

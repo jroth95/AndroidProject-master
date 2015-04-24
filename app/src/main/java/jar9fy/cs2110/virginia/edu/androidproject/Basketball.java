@@ -24,7 +24,7 @@ public class Basketball extends View {
     Bitmap basketball  = BitmapFactory.decodeResource(getResources(), R.drawable.basketball);
     Point point;
     public Point vel;
-    int velocity = 4;
+    int velocity = 6;
     boolean isShoot = false;
     float y;
     int bballX1, bballX2;
@@ -77,25 +77,25 @@ public class Basketball extends View {
     public float getY(){
         return y;
     }
-
-    public boolean makeRectangle() {
-        bballlocation1 = this.getX();
-        bballX1 = (int) bballlocation1;
-        bballX2 = bballX1 + basketball.getWidth();
-
-        bballlocation2 = this.getY();
-        bballY1 = (int) bballlocation2;
-        bballY2 = bballY1 - basketball.getHeight();
-
-        aroundBball.set(bballX1, bballY1, bballX2, bballY1);
-
-        return true;
-
-    }
-
-    public Rect getRectangle() {
-        return aroundBball;
-    }
+//
+//    public boolean makeRectangle() {
+//        bballlocation1 = this.getX();
+//        bballX1 = (int) bballlocation1;
+//        bballX2 = bballX1 + basketball.getWidth();
+//
+//        bballlocation2 = this.getY();
+//        bballY1 = (int) bballlocation2;
+//        bballY2 = bballY1 - basketball.getHeight();
+//
+//        aroundBball.set(bballX1, bballY1, bballX2, bballY1);
+//
+//        return true;
+//
+//    }
+//
+//    public Rect getRectangle() {
+//        return aroundBball;
+//    }
 
 
 }
